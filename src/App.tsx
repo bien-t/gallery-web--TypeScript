@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Layout from './components/Layout'
+import Signup from './components/Signup'
+import Signin from './components/Signin'
+import { PrivateRoute } from './PrivateRoute'
+import Galleries from './components/Galleries'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/signup' element={<Signup />} />
+                <Route path='/signin' element={<Signin />} />
+                <Route element={<Layout />}>
+                    <Route path='/galleries/:id' element={
+                        <PrivateRoute>
+                            <Galleries />
+                        </PrivateRoute>} />
+                    <Route path='/galleries' element={<PrivateRoute><Galleries /></PrivateRoute>} />
+                </Route>
+                <Route path="*" element={<Signin />} />
+            </Routes>
+        </BrowserRouter>
+
+    )
 }
 
-export default App;
+export default App
