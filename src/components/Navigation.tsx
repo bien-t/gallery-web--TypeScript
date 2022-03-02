@@ -28,13 +28,14 @@ const NavListItem = styled(ButtonGeneral)`
 
 function Navigation() {
     const client = useApolloClient()
-    const [log, { loading, error }] = useMutation(LOG_OUT)
+    const [log] = useMutation(LOG_OUT)
     const navigate = useNavigate()
 
 
     const logout = async (event: React.MouseEvent) => {
         event.preventDefault()
         const { data } = await log()
+        console.log(data)
         localStorage.removeItem('isLogged');
         localStorage.removeItem('id');
         client.clearStore();

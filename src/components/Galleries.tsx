@@ -138,7 +138,7 @@ function Galleries() {
 
     /*Galleries*/
     const params = useParams()
-    const { loading, error, data } = useQuery(GET_GALLERY_INFO, { variables: { id: params.id } })
+    const { data } = useQuery(GET_GALLERY_INFO, { variables: { id: params.id } })
 
 
 

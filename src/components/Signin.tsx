@@ -13,7 +13,7 @@ import { useNavigate, Navigate } from 'react-router-dom'
 function Signin() {
     const [formValues, setFormValues] = React.useState({ email: '', password: '' })
     const [userError, setUserError] = React.useState<[{ message: string }]>([{ message: '' }])
-    const [userLogin, { loading, error }] = useMutation(USER_LOGIN)
+    const [userLogin] = useMutation(USER_LOGIN)
     const navigate = useNavigate()
     const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormValues({

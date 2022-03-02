@@ -24,7 +24,7 @@ function Signup() {
     const [emailError, setEmailError] = React.useState({ message: '' })
     const [passwordError, setPasswordError] = React.useState({ message: '' })
     const [userError, setUserError] = React.useState([])
-    const [userCreate, { loading, error }] = useMutation(USER_CREATE)
+    const [userCreate] = useMutation(USER_CREATE)
     const navigate = useNavigate()
     const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserError([])
